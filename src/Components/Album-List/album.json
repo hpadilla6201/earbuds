@@ -1,0 +1,17 @@
+[{
+    "name": "Her Loss",
+    "artist": "Drake & 21 Savage",
+    "rating": "8/10",
+    "image": "/images/her-loss.png"
+  },{
+    "name": "Happier Than Ever",
+    "artist": "Billie Eilish",
+    "rating": "10/10",
+    "image": "/images/happier-than-ever.png"
+  },
+  {
+    "name": "Hoodie SZN",
+    "artist": "A Boogie Wit Da Hoodie",
+    "rating": "9/10",
+    "image": "/images/hoodie-szn.png"
+  }]
