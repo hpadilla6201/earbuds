@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AlbumItem from "./album-item";
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import { findAllAlbumsThunk } from "../../services/album-thunk";
 const AlbumList = () => {
-    const albumArray = useSelector(state => state.album)
+    const albumArray = useSelector(state => state.albums)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(findAllAlbumsThunk())
+    }, [dispatch])
     return(
         <ul className="list-group-horizontal">
         {

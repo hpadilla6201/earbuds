@@ -2,16 +2,10 @@ import React from "react";
 import AlbumList from "../Album-List";
 import Header from "../Header";
 import NavigationSidebar from "../NavigationSidebar";
-import albumReducer from "../../reducers/album-reducer";
-import { configureStore }
-  from '@reduxjs/toolkit';
-import {Provider} from "react-redux";
-const store = configureStore(
-  {reducer: {album: albumReducer}});
 const Home = () => {
     return (
-        <Provider store={store}>
-            <div className="container">
+        <>
+        <div className="container">
             <Header /> 
             <div className="row">
                 <div className="col-2">
@@ -22,9 +16,7 @@ const Home = () => {
                </div>
             </div>
         </div>
-        </Provider>
-        
-        
+        </>
     );
 }
 

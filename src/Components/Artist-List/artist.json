@@ -1,0 +1,21 @@
+[{
+    "firstname": "Aubrey",
+    "lastname": "Graham",
+    "nickname": "Drake",
+    "sex": "male",
+    "image": "/images/drake.png"
+},
+{
+    "firstname": "Billie",
+    "lastname": "Eilish",
+    "nickname": "Billie Eilish",
+    "sex": "female",
+    "image": "/images/billie-eilish.png"
+},
+{
+    "firstname": "Artist",
+    "lastname": "Dubose",
+    "nickname": "A Boogie wit da Hoodie",
+    "sex": "male",
+    "image": "/images/a-boogie-wit-da-hoodie.png"
+}]
