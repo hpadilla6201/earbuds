@@ -9,5 +9,5 @@ export const findAlbumBySearchTermThunk = createAsyncThunk(
 
 export const getTopTracksThunk = createAsyncThunk(
     'getTopTracks',
-    () => getTopTracks()
+    async () => await getTopTracks()
 )

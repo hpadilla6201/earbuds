@@ -2,9 +2,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import { findAlbumBySearchTermThunk } from "./lastFm-thunks";
 import { useNavigate } from "react-router-dom";
+import Header from "../Components/Header";
 
 const LastFmSearch = () => {
-    const [searchTerm, setSearchTerm] = useState('Take Care')
+    const [searchTerm, setSearchTerm] = useState()
     const {albums} = useSelector((state) => state.albums)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -13,6 +14,8 @@ const LastFmSearch = () => {
     }, [dispatch, searchTerm])
     return (
         <>
+            <Header />
+            {/* <NavigationSidebar /> */}
             <ul className="list-group">
                 <li className="list-group-item">
                     <button
@@ -25,6 +28,7 @@ const LastFmSearch = () => {
                     </button>
                     <input
                         className="form-control w-75"
+                        placeholder="Search Albums"
                         onChange={(e) => {
                             setSearchTerm(e.target.value)
                         }}

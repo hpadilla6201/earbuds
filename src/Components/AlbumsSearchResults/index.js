@@ -1,19 +1,31 @@
 import React from "react";
 import { useSelector} from 'react-redux'
+import { Link } from "react-router-dom";
+import LastFmSearch from "../../lastFm/lastFm-search";
 const AlbumSearchResults = () => {
     const searchResults = useSelector(state => state.lastFm)
 
     return(
-        <ul className="list-group-horizontal">
+        <>
+         <LastFmSearch />
+        <div className="list-group">
         {
             searchResults.map((album, index) => (
-                <li key={index}>
-                    {album.name}
+                <div className="list-group-item" key={index}>
+                    <h2>{album.name}</h2>
+                    <Link><img src={album.image[2]['#text']} alt=""/></Link>
                     
-                </li>
+                    <h2>By: {album.artist}</h2>
+                   
+                    
+                   
+                    
+                </div>
             ))
         }
-        </ul>
+        </div>
+        </>
+       
         
     )
     };

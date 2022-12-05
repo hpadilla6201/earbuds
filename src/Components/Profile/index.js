@@ -1,22 +1,25 @@
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutThunk } from "../../users/users-thunk";
+import { useNavigate } from "react-router";
+import Header from "../Header";
 
 const Profile = () => {
-    return (
-        <div>
-            <div className="mt-4">
-                <img className="m-auto d-block" width={243} height={243}  src="/images/avatar.png" alt=""/>
-                <div className="text-center">
-                    <h1>@HectorP123</h1>
-                    <h1>Hector Padilla</h1>
-                </div>
-            </div>
-            <h1>Favorite Albums</h1>
-            <h1>Favorite Artists</h1>
-            <h1>Friends</h1>
-        </div>
-        
-    );
-
-}
-
-export default Profile
+  const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+  const handleLogoutBtn = () => {
+    dispatch(logoutThunk());
+    navigate("/login");
+  };
+  return (
+    <>
+      <Header />
+      <h1>Profile</h1>
+      {currentUser && <h2>Welcome new user: {currentUser.username}</h2>}
+      <button className="btn btn-danger" onClick={handleLogoutBtn}>
+        Logout
+      </button>
+    </>
+  );
+};
+export default Profile;

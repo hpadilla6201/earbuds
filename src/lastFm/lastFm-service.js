@@ -13,7 +13,8 @@ export const findAlbumBySearchTerm = async (term) => {
 
 export const getTopTracks = async () => {
     const response = await axios.get(`${TOP_TRACK_URL}`)
-    return response.data.Search;
+    console.log(response)
+    return response.data.tracks;
 }
 
 
