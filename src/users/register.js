@@ -7,8 +7,8 @@ import { Navigate } from "react-router";
 
 const Register = () => {
   const { currentUser } = useSelector((state) => state.users);
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const handleRegisterBtn = () => {
     dispatch(registerThunk({ username, password }));

@@ -14,6 +14,7 @@ import LastFmSearch from "./lastFm/lastFm-search";
 import Login from "./users/login";
 import usersReducer from "./users/users-reducer";
 import Register from "./users/register";
+import ProtectedRoute from "./users/protected-route";
 
 const store = configureStore({
   reducer: {
@@ -29,8 +30,16 @@ function App() {
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
+            <Route path="/home" element={<Home />} />
             <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/search" element={<LastFmSearch />} />
             <Route path="/searchResults" element={<AlbumSearchResults />} />
             <Route path="/login" element={<Login />} />

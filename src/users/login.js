@@ -6,10 +6,9 @@ import Header from "../Components/Header";
 
 const Login = () => {
   const { currentUser } = useSelector((state) => state.users);
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  //eslint-disable-next-line
   const navigate = useNavigate();
   const handleLoginBtn = () => {
     try {
