@@ -39,7 +39,12 @@ export const findAllUsers = async () => {
 
 export const createUser = () => {};
 
-// eslint-disable-next-line
-const deleteUser = () => {};
-// eslint-disable-next-line
-const updateUser = () => {};
+const deleteUser = async (uid) => {
+  const response = await axios.delete(`${USER_API_URL}/${uid}`);
+  return response.data;
+};
+
+const updateUser = async (user) => {
+  const response = await axios.put(`${USER_API_URL}/${user._id}`, user);
+  return user;
+};
