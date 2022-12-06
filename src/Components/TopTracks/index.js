@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getTopTracksThunk } from "../../lastFm/lastFm-thunks";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-const AlbumList = () => {
+const TopTracks = () => {
   const albumArray = useSelector((state) => state.lastFm);
   const { currentUser } = useSelector((state) => state.users);
   const dispatch = useDispatch();
@@ -31,4 +31,4 @@ const AlbumList = () => {
     </>
   );
 };
-export default AlbumList;
+export default TopTracks;

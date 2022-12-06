@@ -19,7 +19,6 @@ export const register = async (user) => {
 
 export const login = async (user) => {
   const response = await api.post(`${BASE_API_URL}/login`, user);
-  console.log(response.data);
   return response.data;
 };
 
@@ -39,12 +38,13 @@ export const findAllUsers = async () => {
 
 export const createUser = () => {};
 
-const deleteUser = async (uid) => {
+export const deleteUser = async (uid) => {
   const response = await axios.delete(`${USER_API_URL}/${uid}`);
   return response.data;
 };
 
-const updateUser = async (user) => {
+export const updateUser = async (user) => {
+  //eslint-disable-next-line
   const response = await axios.put(`${USER_API_URL}/${user._id}`, user);
   return user;
 };

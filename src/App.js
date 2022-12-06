@@ -15,6 +15,12 @@ import Login from "./users/login";
 import usersReducer from "./users/users-reducer";
 import Register from "./users/register";
 import ProtectedRoute from "./users/protected-route";
+import Albums from "./albums";
+import RapTopAlbums from "./Components/TopRapAlbums";
+import HipTopAlbums from "./Components/TopHipHopAlbums";
+import RnbTopAlbums from "./Components/TopRnbAlbums";
+import PopTopAlbums from "./Components/TopPopAlbums";
+import TopArtists from "./Components/TopArtists";
 
 const store = configureStore({
   reducer: {
@@ -32,6 +38,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/" element={<Home />} />
+            <Route path="/albums" element={<Albums />} />
             <Route
               path="/profile"
               element={
@@ -44,6 +51,11 @@ function App() {
             <Route path="/searchResults" element={<AlbumSearchResults />} />
             <Route path="/login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="/topHipHopAlbums" element={<HipTopAlbums />} />
+            <Route path="/topRapAlbums" element={<RapTopAlbums />} />
+            <Route path="/topRnbAlbums" element={<RnbTopAlbums />} />
+            <Route path="/topPopAlbums" element={<PopTopAlbums />} />
+            <Route path="/topArtists" element={<TopArtists />} />
           </Routes>
         </BrowserRouter>
       </Provider>

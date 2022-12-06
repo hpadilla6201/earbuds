@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import LastFmSearch from "../../lastFm/lastFm-search";
 
 const Header = () => {
+  let location = useLocation();
+  let active = location.pathname;
   const { currentUser } = useSelector((state) => state.users);
 
   return (
@@ -14,10 +16,20 @@ const Header = () => {
         <div className="col-7">
           {/* <LastFmSearch /> */}
           <ul className="list-group list-group-horizontal">
-            <Link to="/" className="list-group-item">
+            <Link
+              to="/home"
+              className={`list-group-item ${
+                active === "/home" ? "active" : ""
+              }`}
+            >
               Home
             </Link>
-            <Link to="/search" className="list-group-item">
+            <Link
+              to="/search"
+              className={`list-group-item ${
+                active === "/search" ? "active" : ""
+              }`}
+            >
               Search
             </Link>
           </ul>
