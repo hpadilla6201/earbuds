@@ -1,20 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getTopPopAlbumsThunk } from "../../lastFm/lastFm-thunks";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-const PopAlbumsResults = () => {
-  const albumArray = useSelector((state) => state.lastFm.topPopAlbums);
-  const { currentUser } = useSelector((state) => state.users);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTopPopAlbumsThunk());
-  }, [dispatch]);
 
+const PopAlbumsResults = ({ albumArray }) => {
   return (
     <>
-      {currentUser && <h2>Hello: {currentUser.username}</h2>}
       <h1>Top Pop Albums</h1>
       <div className="list-group">
         {albumArray.map((album, index) => (
