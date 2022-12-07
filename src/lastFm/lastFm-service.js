@@ -54,7 +54,7 @@ export const getTopPopAlbums = async () => {
   return response.data.albums;
 };
 
-export const getTopArists = async () => {
+export const getTopArtists = async () => {
   const response = await axios.get(`${TOP_ARTIST_URL}`);
   return response.data.artists;
 };

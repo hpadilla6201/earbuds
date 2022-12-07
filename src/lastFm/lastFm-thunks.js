@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   findAlbumBySearchTerm,
   getAristsTopAlbums,
-  getTopArists,
+  getTopArtists,
   getTopHipHopAlbums,
   getTopPopAlbums,
   getTopRapAlbums,
@@ -40,9 +40,9 @@ export const getTopPopAlbumsThunk = createAsyncThunk(
   async () => await getTopPopAlbums()
 );
 
-export const getTopAristsThunk = createAsyncThunk(
+export const getTopArtistsThunk = createAsyncThunk(
   "getTopArtists",
-  async () => await getTopArists()
+  async () => await getTopArtists()
 );
 
 export const getAristsTopAlbumsThunk = createAsyncThunk(

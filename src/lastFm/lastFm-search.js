@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { findAlbumBySearchTermThunk } from "./lastFm-thunks";
 import { useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
-// import AlbumSearchResults from "../Components/AlbumsSearchResults";
 
 const LastFmSearch = () => {
   const [searchTerm, setSearchTerm] = useState();
@@ -22,7 +21,7 @@ const LastFmSearch = () => {
           <button
             className="btn btn-primary float-end"
             onClick={() => {
-              dispatch(findAlbumBySearchTermThunk(searchTerm));
+              //dispatch(findAlbumBySearchTermThunk(searchTerm));
               navigate("/searchResults");
             }}
           >

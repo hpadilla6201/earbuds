@@ -6,46 +6,54 @@ import {
   getTopRapAlbumsThunk,
   getTopRnbAlbumsThunk,
   getTopPopAlbumsThunk,
-  getTopAristsThunk,
+  getTopArtistsThunk,
   getAristsTopAlbumsThunk,
 } from "./lastFm-thunks";
 
 const lastFmSlice = createSlice({
   name: "lastFm",
-  initialState: [],
+  initialState: {
+    albumBySearchTerm: [],
+    topHipHopAlbums: [],
+    topArtists: [],
+    topTracks: [],
+    topRapAlbums: [],
+    topRnbAlbums: [],
+    topPopAlbums: [],
+  },
   extraReducers: (builder) => {
     builder.addCase(findAlbumBySearchTermThunk.fulfilled, (state, action) => {
-      state = action.payload.albummatches.album || [];
+      state.albumBySearchTerm = action.payload.albummatches.album || [];
       return state;
     });
 
     builder.addCase(getTopTracksThunk.fulfilled, (state, action) => {
-      state = action.payload.track || [];
+      state.topTracks = action.payload.track || [];
       return state;
     });
 
     builder.addCase(getTopHipHopAlbumsThunk.fulfilled, (state, action) => {
-      state = action.payload.album || [];
+      state.topHipHopAlbums = action.payload.album || [];
       return state;
     });
 
     builder.addCase(getTopRapAlbumsThunk.fulfilled, (state, action) => {
-      state = action.payload.album || [];
+      state.topRapAlbums = action.payload.album || [];
       return state;
     });
 
     builder.addCase(getTopRnbAlbumsThunk.fulfilled, (state, action) => {
-      state = action.payload.album || [];
+      state.topRnbAlbums = action.payload.album || [];
       return state;
     });
 
     builder.addCase(getTopPopAlbumsThunk.fulfilled, (state, action) => {
-      state = action.payload.album || [];
+      state.topPopAlbums = action.payload.album || [];
       return state;
     });
 
-    builder.addCase(getTopAristsThunk.fulfilled, (state, action) => {
-      state = action.payload.artist || [];
+    builder.addCase(getTopArtistsThunk.fulfilled, (state, action) => {
+      state.topArtists = action.payload.artist || [];
       return state;
     });
 

@@ -5,7 +5,7 @@ import { getTopRnbAlbumsThunk } from "../../lastFm/lastFm-thunks";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 const RnbAlbumResults = () => {
-  const albumArray = useSelector((state) => state.lastFm);
+  const albumArray = useSelector((state) => state.lastFm.topRnbAlbums);
   const { currentUser } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   useEffect(() => {

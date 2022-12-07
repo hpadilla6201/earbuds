@@ -5,7 +5,7 @@ import { getTopPopAlbumsThunk } from "../../lastFm/lastFm-thunks";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 const PopAlbumsResults = () => {
-  const albumArray = useSelector((state) => state.lastFm);
+  const albumArray = useSelector((state) => state.lastFm.topPopAlbums);
   const { currentUser } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   useEffect(() => {

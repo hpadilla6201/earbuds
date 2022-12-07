@@ -21,6 +21,7 @@ import HipTopAlbums from "./Components/TopHipHopAlbums";
 import RnbTopAlbums from "./Components/TopRnbAlbums";
 import PopTopAlbums from "./Components/TopPopAlbums";
 import TopArtists from "./Components/TopArtists";
+import CurrentUser from "./users/current-user";
 
 const store = configureStore({
   reducer: {
@@ -35,28 +36,30 @@ function App() {
     <div className="container mt-4 mb-4">
       <Provider store={store}>
         <BrowserRouter>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/albums" element={<Albums />} />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/search" element={<LastFmSearch />} />
-            <Route path="/searchResults" element={<AlbumSearchResults />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="/topHipHopAlbums" element={<HipTopAlbums />} />
-            <Route path="/topRapAlbums" element={<RapTopAlbums />} />
-            <Route path="/topRnbAlbums" element={<RnbTopAlbums />} />
-            <Route path="/topPopAlbums" element={<PopTopAlbums />} />
-            <Route path="/topArtists" element={<TopArtists />} />
-          </Routes>
+          <CurrentUser>
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/albums" element={<Albums />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/search" element={<LastFmSearch />} />
+              <Route path="/searchResults" element={<AlbumSearchResults />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="/topHipHopAlbums" element={<HipTopAlbums />} />
+              <Route path="/topRapAlbums" element={<RapTopAlbums />} />
+              <Route path="/topRnbAlbums" element={<RnbTopAlbums />} />
+              <Route path="/topPopAlbums" element={<PopTopAlbums />} />
+              <Route path="/topArtists" element={<TopArtists />} />
+            </Routes>
+          </CurrentUser>
         </BrowserRouter>
       </Provider>
     </div>

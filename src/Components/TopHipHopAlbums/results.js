@@ -1,20 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getTopHipHopAlbumsThunk } from "../../lastFm/lastFm-thunks";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-const HipHopAlbumsResults = () => {
-  const albumArray = useSelector((state) => state.lastFm);
-  const { currentUser } = useSelector((state) => state.users);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTopHipHopAlbumsThunk());
-  }, [dispatch]);
 
+const HipHopAlbumsResults = ({ albumArray }) => {
   return (
     <>
-      {currentUser && <h2>Hello: {currentUser.username}</h2>}
       <h1>Top Hip Albums</h1>
       <div className="list-group">
         {albumArray.map((album, index) => (

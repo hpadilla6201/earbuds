@@ -4,15 +4,15 @@ import NavigationSidebar from "../NavigationSidebar";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getTopAristsThunk } from "../../lastFm/lastFm-thunks";
+import { getTopArtistsThunk } from "../../lastFm/lastFm-thunks";
 const Home = () => {
   // const [searchTerm, setSearchTerm] = useState();
-  const artistArray = useSelector((state) => state.lastFm);
+  const artistArray = useSelector((state) => state.lastFm.topArtists);
   // const artistAlbumArray = useSelector((state) => state.lastFm);
   const { currentUser } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getTopAristsThunk());
+    dispatch(getTopArtistsThunk());
   }, [dispatch]);
   return (
     <>

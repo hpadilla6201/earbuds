@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { getTopAristsThunk } from "../../lastFm/lastFm-thunks";
+import { getTopArtistsThunk } from "../../lastFm/lastFm-thunks";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 const TopArtistsResults = () => {
-  const artistArray = useSelector((state) => state.lastFm);
+  const artistArray = useSelector((state) => state.lastFm.topArtists);
   const { currentUser } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getTopAristsThunk());
+    dispatch(getTopArtistsThunk());
   }, [dispatch]);
 
   return (

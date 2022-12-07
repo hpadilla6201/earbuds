@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { findAllAlbumsThunk } from "../../services/album-thunk";
 
 const AlbumSearchResults = () => {
-  const searchResults = useSelector((state) => state.lastFm);
+  const searchResults = useSelector((state) => state.lastFm.albumBySearchTerm);
   //   const { currentUser } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   useEffect(() => {
