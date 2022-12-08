@@ -32,6 +32,14 @@ const Header = () => {
             >
               Search
             </Link>
+            <Link
+              to="/users"
+              className={`list-group-item ${
+                active === "/users" ? "active" : ""
+              }`}
+            >
+              Users
+            </Link>
           </ul>
         </div>
         <div className="col-2 d-flex justify-content-center">

@@ -14,3 +14,8 @@ export const updateAlbumThunk = {};
 export const deleteAlbumThunk = createAsyncThunk("deleteAlbum", (aid) =>
   deleteAlbum(aid)
 );
+
+export const findAlbumByIdThunk = createAsyncThunk(
+  "findAlbumById",
+  (aid) => aid
+);

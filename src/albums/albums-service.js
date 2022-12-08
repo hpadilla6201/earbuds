@@ -19,3 +19,8 @@ export const deleteAlbum = async (aid) => {
   const status = response.data;
   return aid;
 };
+
+export const findAlbumById = async (aid) => {
+  const response = await axios.get(`${ALBUM_API_URL}${aid}`);
+  return response.data;
+};

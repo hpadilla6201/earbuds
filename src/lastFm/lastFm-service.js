@@ -1,5 +1,8 @@
 import axios from "axios";
 
+// eslint-disable-next-line
+const ITUNES_SEARCH_URL = "https://itunes.apple.com/search?entity=album&term=";
+
 const SEARCH_URL =
   "http://ws.audioscrobbler.com//2.0/?method=album.search&album=";
 const TOP_TRACK_URL =
@@ -24,8 +27,16 @@ const TOP_ARTIST_URL =
 const TOP_ARISTS_ALBUMS_URL =
   "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=";
 
+const ID_URL = "https://itunes.apple.com/search?entity=album&term=";
+
 export const findAlbumBySearchTerm = async (term) => {
-  const response = await axios.get(`${SEARCH_URL}${term}${API_KEY}`);
+  // const response = await axios.get(`${SEARCH_URL}${term}${API_KEY}`);
+  const response = await axios.get(`${ITUNES_SEARCH_URL}${term}`);
+  return response.data.results;
+};
+
+export const findAlbumById = async (aid) => {
+  const response = await axios.get(`${ID_URL}${aid}`);
   return response.data.results;
 };
 
@@ -64,4 +75,9 @@ export const getAristsTopAlbums = async (artist) => {
     `${TOP_ARISTS_ALBUMS_URL}${artist}${API_KEY}`
   );
   return response.data.topalbums;
+};
+
+export const findAlbumByLastId = async (imdbID) => {
+  const response = await axios.get(`${SEARCH_URL}${imdbID}`);
+  return response.data;
 };

@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import Profile from "./Components/Profile";
 import albumReducer from "./reducers/album-reducer";
 import lastFmReducer from "./lastFm/lastFm-reducer";
-import AlbumSearchResults from "./Components/AlbumsSearchResults";
 import LastFmSearch from "./lastFm/lastFm-search";
 import Login from "./users/login";
 import usersReducer from "./users/users-reducer";
@@ -22,12 +21,19 @@ import RnbTopAlbums from "./Components/TopRnbAlbums";
 import PopTopAlbums from "./Components/TopPopAlbums";
 import TopArtists from "./Components/TopArtists";
 import CurrentUser from "./users/current-user";
+import reviewsReducer from "./reviews/reviews-reducer";
+import LastFmDetails from "./lastFm/lastFm-details";
+import PublicProfile from "./users/public-profile-";
+import followsReducer from "./follows/follows-reducer";
+import Users from "./users";
 
 const store = configureStore({
   reducer: {
     albums: albumReducer,
     lastFm: lastFmReducer,
     users: usersReducer,
+    reviews: reviewsReducer,
+    follows: followsReducer,
   },
 });
 
@@ -50,7 +56,7 @@ function App() {
                 }
               />
               <Route path="/search" element={<LastFmSearch />} />
-              <Route path="/searchResults" element={<AlbumSearchResults />} />
+              {/* <Route path="/searchResults" element={<AlbumSearchResults />} /> */}
               <Route path="/login" element={<Login />} />
               <Route path="register" element={<Register />} />
               <Route path="/topHipHopAlbums" element={<HipTopAlbums />} />
@@ -58,6 +64,9 @@ function App() {
               <Route path="/topRnbAlbums" element={<RnbTopAlbums />} />
               <Route path="/topPopAlbums" element={<PopTopAlbums />} />
               <Route path="/topArtists" element={<TopArtists />} />
+              <Route path="/details/:id" element={<LastFmDetails />} />
+              <Route path="/profile/:uid" element={<PublicProfile />} />
+              <Route path="/users" element={<Users />} />
             </Routes>
           </CurrentUser>
         </BrowserRouter>

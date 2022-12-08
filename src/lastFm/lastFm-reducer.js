@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import { v4 as uuidv4 } from "uuid";
 import {
   findAlbumBySearchTermThunk,
   getTopHipHopAlbumsThunk,
@@ -8,6 +9,7 @@ import {
   getTopPopAlbumsThunk,
   getTopArtistsThunk,
   getAristsTopAlbumsThunk,
+  findAlbumByIdThunk,
 } from "./lastFm-thunks";
 
 const lastFmSlice = createSlice({
@@ -20,10 +22,30 @@ const lastFmSlice = createSlice({
     topRapAlbums: [],
     topRnbAlbums: [],
     topPopAlbums: [],
+    aristsTopAlbums: [],
+    albumById: [],
+    searchTermAlbumDetail: {},
+  },
+  reducers: {
+    getAlbumSearchTermbyId(state, action) {
+      console.log(action.payload);
+      state.searchTermAlbumDetail = state.albumBySearchTerm.find(
+        (a) => a._id === action.payload
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(findAlbumBySearchTermThunk.fulfilled, (state, action) => {
-      state.albumBySearchTerm = action.payload.albummatches.album || [];
+      //   state.albumBySearchTerm = (action.payload.albummatches.album || []).map(
+      //     (a) => ({ _id: uuidv4(), ...a })
+      //   );
+      state.albumBySearchTerm = action.payload || [];
+      return state;
+    });
+
+    builder.addCase(findAlbumByIdThunk.fulfilled, (state, action) => {
+      state.albumById = action.payload[0] || [];
+      console.log(action);
       return state;
     });
 
@@ -64,4 +86,5 @@ const lastFmSlice = createSlice({
   },
 });
 
+export const { getAlbumSearchTermbyId } = lastFmSlice.actions;
 export default lastFmSlice.reducer;

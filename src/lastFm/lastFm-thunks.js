@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  findAlbumById,
   findAlbumBySearchTerm,
   getAristsTopAlbums,
   getTopArtists,
@@ -13,6 +14,11 @@ import { getTopTracks } from "./lastFm-service";
 export const findAlbumBySearchTermThunk = createAsyncThunk(
   "findAlbumBySearchTerm",
   async (term) => await findAlbumBySearchTerm(term)
+);
+
+export const findAlbumByIdThunk = createAsyncThunk(
+  "findAlbumById",
+  async (aid) => await findAlbumById(aid)
 );
 
 export const getTopTracksThunk = createAsyncThunk(

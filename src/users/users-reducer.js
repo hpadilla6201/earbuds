@@ -30,8 +30,6 @@ const usersReducer = createSlice({
       state.currentUser = action.payload;
     },
     [loginThunk.fulfilled]: (state, action) => {
-      console.log(state.currentUser);
-      console.log(action.payload);
       state.currentUser = action.payload;
     },
     [findAllUsersThunk.fulfilled]: (state, action) => {
