@@ -9,13 +9,16 @@ const reviewsReducer = createSlice({
   name: "reviews",
   initialState: {
     reviews: [],
+    reviewsByAlbum: [],
   },
   extraReducers: {
     [createReviewThunk.fulfilled]: (state, action) => {
       state.reviews.push(action.payload);
     },
     [findReviewsByAlbumThunk.fulfilled]: (state, action) => {
-      state.reviews = action.payload;
+      console.log(state);
+      console.log(action);
+      state.reviewsByAlbum = action.payload || [];
     },
     [findReviewsByAuthorThunk.fulfilled]: (state, action) => {
       state.reviews = action.payload;

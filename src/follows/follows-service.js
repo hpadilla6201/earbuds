@@ -6,7 +6,6 @@ const api = axios.create({ withCredentials: true });
 
 export const followUser = async (follow) => {
   const response = await api.post(`${FOLLOWS_API}`, follow);
-  console.log(response.data);
   return response.data;
 };
 

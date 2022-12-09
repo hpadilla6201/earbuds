@@ -26,16 +26,12 @@ const LastFmDetails = () => {
     dispatch(findAlbumByIdThunk(id));
   }, [dispatch, id]);
   const handlePostReviewBtn = () => {
-    dispatch(
-      createReviewThunk({
-        review,
-        id,
-      })
-    );
+    dispatch(createReviewThunk({ review, lastFmID: id }));
   };
   return (
     <>
       <Header />
+      {console.log(reviews)}
       <h1>{details.collectionName}</h1>
       <div className="row">
         <h3>Artist: {details.artistName}</h3>
@@ -57,8 +53,8 @@ const LastFmDetails = () => {
         </div>
       )}
       <ul className="list-group">
-        {reviews.map((review) => (
-          <li className="list-group-item">
+        {reviews.map((review, index) => (
+          <li className="list-group-item" key={index}>
             {review.review}
             <Link to={`/profile/${review.author._id}`} className="float-end">
               {review.author.username}

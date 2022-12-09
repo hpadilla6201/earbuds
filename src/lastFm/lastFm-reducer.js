@@ -28,7 +28,6 @@ const lastFmSlice = createSlice({
   },
   reducers: {
     getAlbumSearchTermbyId(state, action) {
-      console.log(action.payload);
       state.searchTermAlbumDetail = state.albumBySearchTerm.find(
         (a) => a._id === action.payload
       );
@@ -45,7 +44,6 @@ const lastFmSlice = createSlice({
 
     builder.addCase(findAlbumByIdThunk.fulfilled, (state, action) => {
       state.albumById = action.payload[0] || [];
-      console.log(action);
       return state;
     });
 
