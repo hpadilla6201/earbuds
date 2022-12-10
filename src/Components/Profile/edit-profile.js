@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerThunk } from "./users-thunk";
-import { Navigate } from "react-router";
-import Header from "../Components/Header";
+import Header from "../Header";
+import { updateUserThunk } from "../../users/users-thunk";
 
-const Register = () => {
+const EditProfile = () => {
   const { currentUser } = useSelector((state) => state.users);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,27 +12,23 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const dispatch = useDispatch();
-  const handleRegisterBtn = () => {
+  const handleEditButton = () => {
     dispatch(
-      registerThunk({ username, password, email, phone, firstName, lastName })
+      updateUserThunk({ username, password, email, phone, firstName, lastName })
     );
   };
-
-  if (currentUser) {
-    return <Navigate to={"/profile"} />;
-  }
 
   return (
     <>
       <Header />
-      <h1 className="text-center">Register</h1>
+
+      <h1 className="text-center">Edit Profile</h1>
       <form>
         <div className="form-group p-2">
           <label for="inputFirstName">First Name</label>
           <input
             onChange={(e) => setFirstName(e.target.value)}
             className="form-control"
-            placeholder="First Name"
             value={firstName}
             type="text"
             id="inputFirstName"
@@ -44,7 +39,6 @@ const Register = () => {
           <input
             onChange={(e) => setLastName(e.target.value)}
             className="form-control"
-            placeholder="Last Name"
             value={lastName}
             type="text"
             id="inputLastName"
@@ -55,7 +49,6 @@ const Register = () => {
           <input
             onChange={(e) => setUsername(e.target.value)}
             className="form-control"
-            placeholder="Username"
             value={username}
             id="inputUsername"
           />
@@ -65,7 +58,6 @@ const Register = () => {
           <input
             onChange={(e) => setPassword(e.target.value)}
             className="form-control"
-            placeholder="Password"
             type="password"
             value={password}
             id="inputPassword"
@@ -76,7 +68,6 @@ const Register = () => {
           <input
             onChange={(e) => setEmail(e.target.value)}
             className="form-control"
-            placeholder="Email"
             type="email"
             value={email}
             id="inputEmail"
@@ -87,7 +78,6 @@ const Register = () => {
           <input
             onChange={(e) => setPhone(e.target.value)}
             className="form-control"
-            placeholder="Phone Number"
             type="tel"
             value={phone}
             id="inputPhone"
@@ -96,12 +86,12 @@ const Register = () => {
 
         <button
           className="btn btn-primary w-100 p-2"
-          onClick={handleRegisterBtn}
+          onClick={handleEditButton}
         >
-          Register
+          Submit Changes
         </button>
       </form>
     </>
   );
 };
-export default Register;
+export default EditProfile;

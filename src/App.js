@@ -26,6 +26,7 @@ import LastFmDetails from "./lastFm/lastFm-details";
 import PublicProfile from "./users/public-profile-";
 import followsReducer from "./follows/follows-reducer";
 import Users from "./users";
+import EditProfile from "./Components/Profile/edit-profile";
 
 const store = configureStore({
   reducer: {
@@ -52,6 +53,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/editProfile"
+                element={
+                  <ProtectedRoute>
+                    <EditProfile />
                   </ProtectedRoute>
                 }
               />

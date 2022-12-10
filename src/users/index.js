@@ -13,12 +13,12 @@ const Users = () => {
   return (
     <>
       <Header />
-      <h1>Users {users.length}</h1>
+      <h1>Total Users: {users.length}</h1>
       <ul className="list-group">
-        {users.map((user) => (
+        {users.map((user, index) => (
           <li key={user._id} className="list-group-item">
-            <Link to={`/profile/${user._id}`}>
-              {user.username} {user._id}
+            <Link to={`/profile/${user._id}`} className="text-decoration-none">
+              {index + 1}. {user.username}
             </Link>
           </li>
         ))}

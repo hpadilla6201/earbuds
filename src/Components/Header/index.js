@@ -1,20 +1,27 @@
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import LastFmSearch from "../../lastFm/lastFm-search";
+import { useDispatch } from "react-redux";
+import { logoutThunk } from "../../users/users-thunk";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   let location = useLocation();
   let active = location.pathname;
   const { currentUser } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogoutBtn = () => {
+    dispatch(logoutThunk());
+    navigate("/login");
+  };
 
   return (
     <header className="mt-2">
       <nav className="navbar navbar-expand-lg bg-blue">
         <div className="col-3">
-          <h1>Earbuds</h1>
+          <h1 className="text-primary">Earbuds</h1>
         </div>
         <div className="col-7">
-          {/* <LastFmSearch /> */}
           <ul className="list-group list-group-horizontal">
             <Link
               to="/home"
@@ -57,6 +64,13 @@ const Header = () => {
                 <Link to="/profile" className="dropdown-item">
                   My Profile
                 </Link>
+                <Link to="/editProfile" className="dropdown-item">
+                  Edit Profile
+                </Link>
+                <hr className="dropdown-divider"></hr>
+                <button className="dropdown-item" onClick={handleLogoutBtn}>
+                  Logout
+                </button>
               </div>
             )}
             {!currentUser && (

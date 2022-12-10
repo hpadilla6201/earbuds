@@ -17,7 +17,7 @@ const LastFmDetails = () => {
   const [review, setReview] = useState("");
   const details = useSelector((state) => state.lastFm.albumById);
   //   const [details, setDetails] = useState({});
-  const { reviews } = useSelector((state) => state.reviews);
+  const reviews = useSelector((state) => state.reviews.reviewsByAlbum);
   //   const { details } = useSelector((state) => state.lastFm.albumById);
   const { currentUser } = useSelector((state) => state.users);
   const dispatch = useDispatch();
@@ -31,12 +31,9 @@ const LastFmDetails = () => {
   return (
     <>
       <Header />
-      {console.log(reviews)}
       <h1>{details.collectionName}</h1>
       <div className="row">
         <h3>Artist: {details.artistName}</h3>
-
-        <div>{/* <img src={details.image[2]["#text"]} alt="" /> */}</div>
         <div>
           <img src={details.artworkUrl100} alt="" />
         </div>
@@ -52,17 +49,24 @@ const LastFmDetails = () => {
           <button onClick={handlePostReviewBtn}>Post Review</button>
         </div>
       )}
+      <h1>Album Reviews:</h1>
       <ul className="list-group">
         {reviews.map((review, index) => (
           <li className="list-group-item" key={index}>
-            {review.review}
-            <Link to={`/profile/${review.author._id}`} className="float-end">
-              {review.author.username}
-            </Link>
+            <div className="row">
+              <Link
+                to={`/profile/${review.author._id}`}
+                className="float-start text-decoration-none"
+              >
+                <h4> {review.author.username}</h4>
+              </Link>
+            </div>
+            <div className="row">
+              <p>{review.review}</p>
+            </div>
           </li>
         ))}
       </ul>
-      <pre>{JSON.stringify(details, null, 2)}</pre>
     </>
   );
 };

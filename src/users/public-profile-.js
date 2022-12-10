@@ -7,20 +7,28 @@ import { findReviewsByAuthorThunk } from "../reviews/reviews-thunk";
 import { findFollowersThunk } from "../follows/follows-thunk";
 import { findFollowingThunk } from "../follows/follows-thunk";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import Header from "../Components/Header";
 const PublicProfile = () => {
   const { uid } = useParams();
   const { publicProfile } = useSelector((state) => state.users);
   const { reviews } = useSelector((state) => state.reviews);
+  const currentUser = useSelector((state) => state.users.currentUser);
   const { followers, following } = useSelector((state) => state.follows);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleFollowBtn = () => {
-    dispatch(
-      followUserThunk({
-        followed: uid,
-      })
-    );
+    {
+      currentUser &&
+        dispatch(
+          followUserThunk({
+            followed: uid,
+          })
+        );
+    }
+    {
+      !currentUser && navigate("/login");
+    }
   };
   useEffect(() => {
     dispatch(findUserByIdThunk(uid));
@@ -34,7 +42,7 @@ const PublicProfile = () => {
       <button onClick={handleFollowBtn} className="btn btn-success float-end">
         Follow
       </button>
-      <h1>{publicProfile && publicProfile.username}</h1>
+      <h1>{publicProfile && publicProfile.username}'s Profile</h1>
       <ul>
         {reviews &&
           reviews.map((review) => (
@@ -48,11 +56,10 @@ const PublicProfile = () => {
       <h2>Following</h2>
       <div className="list-group">
         {following &&
-          following.map((follow, index) => (
+          following.map((follow) => (
             <Link
               to={`/profile/${follow.followed._id}`}
               className="list-group-item"
-              key={index}
             >
               {follow.followed.username}
             </Link>

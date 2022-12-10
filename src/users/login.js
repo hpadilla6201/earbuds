@@ -22,23 +22,33 @@ const Login = () => {
   return (
     <>
       <Header />
-      <h1>Login</h1>
-      <input
-        onChange={(e) => setUsername(e.target.value)}
-        className="form-control"
-        placeholder="username"
-        value={username}
-      />
-      <input
-        onChange={(e) => setPassword(e.target.value)}
-        className="form-control"
-        placeholder="password"
-        type="password"
-        value={password}
-      />
-      <button className="btn btn-primary w-100" onClick={handleLoginBtn}>
-        Login
-      </button>
+      <h1 className="text-center">Login</h1>
+      <form>
+        <div className="form-group p-2">
+          <label for="inputUsername">Username</label>
+          <input
+            onChange={(e) => setUsername(e.target.value)}
+            className="form-control"
+            placeholder="Username"
+            value={username}
+            id="inputUsername"
+          />
+        </div>
+        <div className="form-group p-2">
+          <label for="inputPassword">Password</label>
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            className="form-control"
+            placeholder="Password"
+            type="password"
+            value={password}
+            id="inputPassword"
+          />
+        </div>
+        <button className="btn btn-primary w-100" onClick={handleLoginBtn}>
+          Login
+        </button>
+      </form>
     </>
   );
 };

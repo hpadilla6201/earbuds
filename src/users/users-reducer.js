@@ -6,6 +6,7 @@ import {
   logoutThunk,
   profileThunk,
   registerThunk,
+  updateUserThunk,
 } from "./users-thunk";
 
 const usersReducer = createSlice({
@@ -35,6 +36,14 @@ const usersReducer = createSlice({
     [findAllUsersThunk.fulfilled]: (state, action) => {
       state.users = action.payload;
       state.loading = false;
+    },
+    [updateUserThunk.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      const userNdx = state.users.findIndex((u) => u._id === payload._id);
+      state.users[userNdx] = {
+        ...state.users[userNdx],
+        ...payload,
+      };
     },
   },
 });

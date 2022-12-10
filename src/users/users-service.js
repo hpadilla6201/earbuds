@@ -44,7 +44,6 @@ export const deleteUser = async (uid) => {
 };
 
 export const updateUser = async (user) => {
-  //eslint-disable-next-line
   const response = await axios.put(`${USER_API_URL}/${user._id}`, user);
-  return user;
+  return response.data;
 };
