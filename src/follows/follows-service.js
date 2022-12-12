@@ -1,5 +1,7 @@
 import axios from "axios";
+// eslint-disable-next-line
 const FOLLOWS_API = "http://localhost:4000/follows";
+// eslint-disable-next-line
 const USERS_API = "http://localhost:4000/users";
 
 const HEROKU_FOLLOWS_API =

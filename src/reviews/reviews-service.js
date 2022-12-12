@@ -1,7 +1,10 @@
 import axios from "axios";
 
+// eslint-disable-next-line
 const REVIEW_API = "http://localhost:4000/api/reviews";
+// eslint-disable-next-line
 const ALBUM_REVIEWS_API = "http://localhost:4000/api/album";
+// eslint-disable-next-line
 const AUTHOR_REVIEWS_API = "http://localhost:4000/api/users";
 
 const HEROKU_REVIEW_API =
