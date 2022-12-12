@@ -11,6 +11,8 @@ const api = axios.create({
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin":
+      "https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=246223df2a4884151a27c46913971f61&format=json",
   },
 });
 
