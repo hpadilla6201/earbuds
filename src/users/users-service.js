@@ -1,6 +1,8 @@
 import axios from "axios";
 
+// eslint-disable-next-line
 const USER_API_URL = "http://localhost:4000/users";
+// eslint-disable-next-line
 const BASE_API_URL = "http://localhost:4000";
 const HEROKU_BASE_URL = "https://earbuds-node-server-app.herokuapp.com";
 const HEROKU_USERS_URL = "https://earbuds-node-server-app.herokuapp.com/users";
