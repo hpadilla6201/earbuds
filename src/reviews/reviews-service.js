@@ -8,7 +8,7 @@ const ALBUM_REVIEWS_API = "http://localhost:4000/api/album";
 const AUTHOR_REVIEWS_API = "http://localhost:4000/api/users";
 
 const HEROKU_REVIEW_API =
-  "https://earbuds-node-server-app.herokuapp.com/reviews";
+  "https://earbuds-node-server-app.herokuapp.com/api/reviews";
 const HEROKU_ALBUM_REVIEWS_API =
   "https://earbuds-node-server-app.herokuapp.com/api/album";
 const HEROKU_AUTHOR_REVIEWS_API =
