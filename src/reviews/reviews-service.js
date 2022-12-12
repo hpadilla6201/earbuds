@@ -15,7 +15,7 @@ const HEROKU_AUTHOR_REVIEWS_API =
   "https://earbuds-node-server-app.herokuapp.com/api/users";
 
 const api = axios.create({
-  withCredentials: true,
+  withCredentials: false,
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
