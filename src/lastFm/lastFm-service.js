@@ -2,10 +2,10 @@ import axios from "axios";
 
 // eslint-disable-next-line
 const api = axios.create({
-  withCredentials: true,
+  withCredentials: false,
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "https://meek-kataifi-fda3e7.netlify.app",
+    "Access-Control-Allow-Origin": "*",
   },
 });
 
