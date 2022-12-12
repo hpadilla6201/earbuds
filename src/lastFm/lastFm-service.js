@@ -12,28 +12,28 @@ const api = axios.create({
 const ITUNES_SEARCH_URL = "https://itunes.apple.com/search?entity=album&term=";
 
 const SEARCH_URL =
-  "http://ws.audioscrobbler.com//2.0/?method=album.search&album=";
+  "https://ws.audioscrobbler.com//2.0/?method=album.search&album=";
 const TOP_TRACK_URL =
-  "http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=246223df2a4884151a27c46913971f61&format=json";
+  "https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=246223df2a4884151a27c46913971f61&format=json";
 const API_KEY = "&api_key=246223df2a4884151a27c46913971f61&format=json";
 
 const HIP_HOP_URL =
-  "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=Hip-Hop&api_key=246223df2a4884151a27c46913971f61&format=json";
+  "https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=Hip-Hop&api_key=246223df2a4884151a27c46913971f61&format=json";
 
 const RAP_URL =
-  "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=rap&api_key=246223df2a4884151a27c46913971f61&format=json";
+  "https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=rap&api_key=246223df2a4884151a27c46913971f61&format=json";
 
 const RNB_URL =
-  "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=rnb&api_key=246223df2a4884151a27c46913971f61&format=json";
+  "https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=rnb&api_key=246223df2a4884151a27c46913971f61&format=json";
 
 const POP_URL =
-  "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=pop&api_key=246223df2a4884151a27c46913971f61&format=json";
+  "https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=pop&api_key=246223df2a4884151a27c46913971f61&format=json";
 
 const TOP_ARTIST_URL =
-  "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=246223df2a4884151a27c46913971f61&format=json";
+  "https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=246223df2a4884151a27c46913971f61&format=json";
 
 const TOP_ARISTS_ALBUMS_URL =
-  "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=";
+  "https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=";
 
 const ID_URL = "https://itunes.apple.com/search?entity=album&term=";
 
