@@ -7,8 +7,8 @@ import { findReviewsByAuthorThunk } from "../reviews/reviews-thunk";
 import { findFollowersThunk } from "../follows/follows-thunk";
 import { findFollowingThunk } from "../follows/follows-thunk";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
 import Header from "../Components/Header";
+import { useNavigate } from "react-router";
 const PublicProfile = () => {
   const { uid } = useParams();
   const { publicProfile } = useSelector((state) => state.users);
@@ -18,16 +18,14 @@ const PublicProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleFollowBtn = () => {
-    {
-      currentUser &&
-        dispatch(
-          followUserThunk({
-            followed: uid,
-          })
-        );
-    }
-    {
-      !currentUser && navigate("/login");
+    currentUser &&
+      dispatch(
+        followUserThunk({
+          followed: uid,
+        })
+      );
+    if (!currentUser) {
+      navigate("/login");
     }
   };
   useEffect(() => {
