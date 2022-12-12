@@ -9,7 +9,10 @@ const HEROKU_USERS_URL = "https://earbuds-node-server-app.herokuapp.com/users";
 
 const api = axios.create({
   withCredentials: true,
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  },
 });
 
 export const findUserById = async (uid) => {

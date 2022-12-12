@@ -4,7 +4,13 @@ const REVIEW_API = "http://localhost:4000/api/reviews";
 const ALBUM_REVIEWS_API = "http://localhost:4000/api/album";
 const AUTHOR_REVIEWS_API = "http://localhost:4000/api/users";
 
-const api = axios.create({ withCredentials: true });
+const api = axios.create({
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  },
+});
 
 export const createReview = async (review) => {
   const response = await api.post(REVIEW_API, review);

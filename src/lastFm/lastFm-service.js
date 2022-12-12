@@ -3,7 +3,10 @@ import axios from "axios";
 // eslint-disable-next-line
 const api = axios.create({
   withCredentials: true,
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  },
 });
 
 const ITUNES_SEARCH_URL = "https://itunes.apple.com/search?entity=album&term=";
@@ -36,53 +39,51 @@ const ID_URL = "https://itunes.apple.com/search?entity=album&term=";
 
 export const findAlbumBySearchTerm = async (term) => {
   // const response = await axios.get(`${SEARCH_URL}${term}${API_KEY}`);
-  const response = await axios.get(`${ITUNES_SEARCH_URL}${term}`);
+  const response = await api.get(`${ITUNES_SEARCH_URL}${term}`);
   return response.data.results;
 };
 
 export const findAlbumById = async (aid) => {
-  const response = await axios.get(`${ID_URL}${aid}`);
+  const response = await api.get(`${ID_URL}${aid}`);
   return response.data.results;
 };
 
 export const getTopTracks = async () => {
-  const response = await axios.get(`${TOP_TRACK_URL}`);
+  const response = await api.get(`${TOP_TRACK_URL}`);
   return response.data.tracks;
 };
 
 export const getTopHipHopAlbums = async () => {
-  const response = await axios.get(`${HIP_HOP_URL}`);
+  const response = await api.get(`${HIP_HOP_URL}`);
   return response.data.albums;
 };
 
 export const getTopRapAlbums = async () => {
-  const response = await axios.get(`${RAP_URL}`);
+  const response = await api.get(`${RAP_URL}`);
   return response.data.albums;
 };
 
 export const getTopRnbAlbums = async () => {
-  const response = await axios.get(`${RNB_URL}`);
+  const response = await api.get(`${RNB_URL}`);
   return response.data.albums;
 };
 
 export const getTopPopAlbums = async () => {
-  const response = await axios.get(`${POP_URL}`);
+  const response = await api.get(`${POP_URL}`);
   return response.data.albums;
 };
 
 export const getTopArtists = async () => {
-  const response = await axios.get(`${TOP_ARTIST_URL}`);
+  const response = await api.get(`${TOP_ARTIST_URL}`);
   return response.data.artists;
 };
 
 export const getAristsTopAlbums = async (artist) => {
-  const response = await axios.get(
-    `${TOP_ARISTS_ALBUMS_URL}${artist}${API_KEY}`
-  );
+  const response = await api.get(`${TOP_ARISTS_ALBUMS_URL}${artist}${API_KEY}`);
   return response.data.topalbums;
 };
 
 export const findAlbumByLastId = async (imdbID) => {
-  const response = await axios.get(`${SEARCH_URL}${imdbID}`);
+  const response = await api.get(`${SEARCH_URL}${imdbID}`);
   return response.data;
 };
