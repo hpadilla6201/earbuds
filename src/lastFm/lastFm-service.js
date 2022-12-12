@@ -7,6 +7,7 @@ const api = axios.create({
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin":
       "https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=246223df2a4884151a27c46913971f61&format=json",
+    "Access-Control-Allow-Origin": "https://meek-kataifi-fda3e7.netlify.app",
   },
 });
 
