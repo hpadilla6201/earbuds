@@ -20,11 +20,13 @@ const Profile = () => {
     navigate("/login");
   };
   useEffect(() => {
-    dispatch(findUserByIdThunk(currentUser._id));
-    dispatch(findReviewsByAuthorThunk(currentUser._id));
-    dispatch(findFollowersThunk(currentUser._id));
-    dispatch(findFollowingThunk(currentUser._id));
-  }, [dispatch, currentUser._id]);
+    if (currentUser) {
+      dispatch(findUserByIdThunk(currentUser._id));
+      dispatch(findReviewsByAuthorThunk(currentUser._id));
+      dispatch(findFollowersThunk(currentUser._id));
+      dispatch(findFollowingThunk(currentUser._id));
+    }
+  }, [dispatch, currentUser]);
   return (
     <>
       <Header />
@@ -59,8 +61,9 @@ const Profile = () => {
       <h2>Followers</h2>
       <div className="list-group">
         {followers &&
-          followers.map((follow) => (
+          followers.map((follow, i) => (
             <Link
+              key={`${i}-${follow.follower._id}`}
               to={`/profile/${follow.follower._id}`}
               className="list-group-item"
             >

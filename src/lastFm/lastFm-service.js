@@ -1,6 +1,11 @@
 import axios from "axios";
 
 // eslint-disable-next-line
+const api = axios.create({
+  withCredentials: true,
+  headers: { "Content-Type": "application/json" },
+});
+
 const ITUNES_SEARCH_URL = "https://itunes.apple.com/search?entity=album&term=";
 
 const SEARCH_URL =

@@ -2,20 +2,40 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../Header";
 import { updateUserThunk } from "../../users/users-thunk";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.users);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState(
+    currentUser ? currentUser.username : ""
+  );
+  const [password, setPassword] = useState(
+    currentUser ? currentUser.password : ""
+  );
+  const [email, setEmail] = useState(currentUser ? currentUser.email : "");
+  const [phone, setPhone] = useState(currentUser ? currentUser.phone : "");
+  const [firstName, setFirstName] = useState(
+    currentUser ? currentUser.firstName : ""
+  );
+  const [lastName, setLastName] = useState(
+    currentUser ? currentUser.lastName : ""
+  );
   const dispatch = useDispatch();
-  const handleEditButton = () => {
+  const handleEditButton = (event) => {
+    event.preventDefault();
     dispatch(
-      updateUserThunk({ username, password, email, phone, firstName, lastName })
+      updateUserThunk({
+        _id: currentUser._id,
+        username,
+        password,
+        email,
+        phone,
+        firstName,
+        lastName,
+      })
     );
+    navigate("/profile");
   };
 
   return (
@@ -23,7 +43,7 @@ const EditProfile = () => {
       <Header />
 
       <h1 className="text-center">Edit Profile</h1>
-      <form>
+      <form onSubmit={handleEditButton}>
         <div className="form-group p-2">
           <label for="inputFirstName">First Name</label>
           <input
@@ -84,10 +104,7 @@ const EditProfile = () => {
           />
         </div>
 
-        <button
-          className="btn btn-primary w-100 p-2"
-          onClick={handleEditButton}
-        >
+        <button type="submit" className="btn btn-primary w-100 p-2">
           Submit Changes
         </button>
       </form>

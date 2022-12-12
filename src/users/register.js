@@ -15,7 +15,14 @@ const Register = () => {
   const dispatch = useDispatch();
   const handleRegisterBtn = () => {
     dispatch(
-      registerThunk({ username, password, email, phone, firstName, lastName })
+      registerThunk({
+        username,
+        password,
+        email,
+        phone,
+        firstName,
+        lastName,
+      })
     );
   };
 

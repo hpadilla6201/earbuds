@@ -3,7 +3,10 @@ import axios from "axios";
 const USER_API_URL = "http://localhost:4000/users";
 const BASE_API_URL = "http://localhost:4000";
 
-const api = axios.create({ withCredentials: true });
+const api = axios.create({
+  withCredentials: true,
+  headers: { "Content-Type": "application/json" },
+});
 
 export const findUserById = async (uid) => {
   const response = await api.get(`${USER_API_URL}/${uid}`);
@@ -32,18 +35,25 @@ export const profile = async () => {
 };
 
 export const findAllUsers = async () => {
-  const response = await axios.get(USER_API_URL);
+  const response = await api.get(USER_API_URL);
   return response.data;
 };
 
 export const createUser = () => {};
 
 export const deleteUser = async (uid) => {
-  const response = await axios.delete(`${USER_API_URL}/${uid}`);
+  const response = await api.delete(`${USER_API_URL}/${uid}`);
   return response.data;
 };
 
 export const updateUser = async (user) => {
-  const response = await axios.put(`${USER_API_URL}/${user._id}`, user);
-  return response.data;
+  try {
+    console.log("BEFORE CALL");
+    const response = await api.put(`${USER_API_URL}/${user._id}`, { ...user });
+    console.log("in update user service", response);
+    return response.data;
+  } catch (e) {
+    console.log("AN ERROR", e);
+    throw e;
+  }
 };

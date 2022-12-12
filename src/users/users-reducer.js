@@ -31,7 +31,9 @@ const usersReducer = createSlice({
       state.currentUser = action.payload;
     },
     [loginThunk.fulfilled]: (state, action) => {
+      console.log(action.payload);
       state.currentUser = action.payload;
+      return state;
     },
     [findAllUsersThunk.fulfilled]: (state, action) => {
       state.users = action.payload;
@@ -39,11 +41,19 @@ const usersReducer = createSlice({
     },
     [updateUserThunk.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      const userNdx = state.users.findIndex((u) => u._id === payload._id);
-      state.users[userNdx] = {
-        ...state.users[userNdx],
-        ...payload,
-      };
+      console.log("IN REDUCER", payload);
+      // const userNdx = state.users.findIndex((u) => u._id === payload._id);
+      // console.log(payload);
+      // state.users[userNdx] = {
+      //   ...state.users[userNdx],
+      //   ...payload,
+      // };
+      state.currentUser = payload;
+      return state;
+    },
+    [updateUserThunk.rejected]: (state, action) => {
+      console.log("ERROR THROWN", action);
+      console.log("ERROR THROWN", state);
     },
   },
 });
