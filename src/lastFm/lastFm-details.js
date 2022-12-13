@@ -1,5 +1,6 @@
 import {
   createReviewThunk,
+  deleteReviewThunk,
   findReviewsByAlbumThunk,
 } from "../reviews/reviews-thunk";
 import { useParams } from "react-router-dom";
@@ -8,17 +9,16 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-// import { getAlbumSearchTermbyId } from "./lastFm-reducer";
 import { findAlbumByIdThunk } from "./lastFm-thunks";
 import Header from "../Components/Header";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const LastFmDetails = () => {
   const { id } = useParams();
   const [review, setReview] = useState("");
   const details = useSelector((state) => state.lastFm.albumById);
-  //   const [details, setDetails] = useState({});
   const reviews = useSelector((state) => state.reviews.reviewsByAlbum);
-  //   const { details } = useSelector((state) => state.lastFm.albumById);
   const { currentUser } = useSelector((state) => state.users);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -27,6 +27,9 @@ const LastFmDetails = () => {
   }, [dispatch, id]);
   const handlePostReviewBtn = () => {
     dispatch(createReviewThunk({ review, lastFmID: id }));
+  };
+  const deleteReviewHandler = (id) => {
+    dispatch(deleteReviewThunk(id));
   };
   return (
     <>
@@ -59,6 +62,11 @@ const LastFmDetails = () => {
                 className="float-start text-decoration-none"
               >
                 <h4> {review.author.username}</h4>
+                <FontAwesomeIcon
+                  icon={faX}
+                  className="float-end"
+                  onClick={() => deleteReviewHandler(reviews._id)}
+                />
               </Link>
             </div>
             <div className="row">

@@ -12,6 +12,7 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [role, setRole] = useState("");
   const dispatch = useDispatch();
   const handleRegisterBtn = () => {
     dispatch(
@@ -22,6 +23,7 @@ const Register = () => {
         phone,
         firstName,
         lastName,
+        role,
       })
     );
   };
@@ -99,6 +101,34 @@ const Register = () => {
             value={phone}
             id="inputPhone"
           />
+        </div>
+        <div className="form-group p-2">
+          <div class="form-check">
+            <input
+              onChange={(e) => setRole(e.target.value)}
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+              value="Subscriber"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              Subscriber
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              onChange={(e) => setRole(e.target.value)}
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault2"
+              value="Admin"
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              Admin
+            </label>
+          </div>
         </div>
 
         <button

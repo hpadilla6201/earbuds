@@ -6,16 +6,18 @@ const REVIEW_API = "http://localhost:4000/api/reviews";
 const ALBUM_REVIEWS_API = "http://localhost:4000/api/album";
 // eslint-disable-next-line
 const AUTHOR_REVIEWS_API = "http://localhost:4000/api/users";
-
+// eslint-disable-next-line
 const HEROKU_REVIEW_API =
   "https://earbuds-node-server-app.herokuapp.com/api/reviews";
+// eslint-disable-next-line
 const HEROKU_ALBUM_REVIEWS_API =
   "https://earbuds-node-server-app.herokuapp.com/api/album";
+// eslint-disable-next-line
 const HEROKU_AUTHOR_REVIEWS_API =
   "https://earbuds-node-server-app.herokuapp.com/api/users";
 
 const api = axios.create({
-  withCredentials: false,
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
@@ -38,5 +40,10 @@ export const findReviewsByAuthor = async (author) => {
   const response = await api.get(
     `${HEROKU_AUTHOR_REVIEWS_API}/${author}/reviews`
   );
+  return response.data;
+};
+
+export const deleteReview = async (rid) => {
+  const response = await axios.delete(`${HEROKU_REVIEW_API}/${rid}`);
   return response.data;
 };

@@ -1,19 +1,23 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  createReview,
-  findReviewsByAuthor,
-  findReviewsByAlbum,
-} from "./reviews-service";
+import * as service from "./reviews-service";
 
 export const createReviewThunk = createAsyncThunk(
   "createReview",
-  async (review) => createReview(review)
+  async (review) => service.createReview(review)
 );
 export const findReviewsByAlbumThunk = createAsyncThunk(
   "findReviewsByAlbum",
-  async (lastFmID) => findReviewsByAlbum(lastFmID)
+  async (lastFmID) => service.findReviewsByAlbum(lastFmID)
 );
 export const findReviewsByAuthorThunk = createAsyncThunk(
   "findReviewsByAuthor",
-  async (author) => findReviewsByAuthor(author)
+  async (author) => service.findReviewsByAuthor(author)
+);
+
+export const deleteReviewThunk = createAsyncThunk(
+  "reviews/deleteReviews",
+  async (reviewId) => {
+    await service.deleteReview(reviewId);
+    return reviewId;
+  }
 );

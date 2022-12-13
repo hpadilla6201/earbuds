@@ -3,9 +3,10 @@ import axios from "axios";
 const FOLLOWS_API = "http://localhost:4000/follows";
 // eslint-disable-next-line
 const USERS_API = "http://localhost:4000/users";
-
+// eslint-disable-next-line
 const HEROKU_FOLLOWS_API =
   "https://earbuds-node-server-app.herokuapp.com/follows";
+// eslint-disable-next-line
 const HEROKU_USERS_API = "https://earbuds-node-server-app.herokuapp.com/users";
 
 const api = axios.create({

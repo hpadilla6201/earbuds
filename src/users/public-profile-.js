@@ -45,9 +45,7 @@ const PublicProfile = () => {
         {reviews &&
           reviews.map((review) => (
             <li>
-              <Link to={`/details/${review.lastFmID}`}>
-                {review.review} {review.lastFmID}
-              </Link>
+              <Link to={`/details/${review.lastFmID}`}>{review.review}</Link>
             </li>
           ))}
       </ul>
